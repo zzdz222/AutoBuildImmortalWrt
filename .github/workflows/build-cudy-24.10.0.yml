@@ -33,7 +33,8 @@ on:
       pppoe_password:
         description: "宽带密码 (若启用PPPoE)"
         required: false
-
+env:
+  kzm=bin
 
 jobs:
   build:
@@ -91,10 +92,10 @@ jobs:
       - name: Generate Firmware SHA-256
         run: |
           if [ "$profiles" = "cudy_tr3000-v1-ubootmod" ]; then
-            kzm=itb
-            echo "platform=ipq40xx/generic" >> $GITHUB_ENV
+            ${{kzm}}="itb"
+            
           else
-            kzm=bin
+            ${{kzm}}="bin"
           fi
           cp ${{ github.workspace }}/bin/targets/${{ env.platform }}/*.${{kzm}} ${{ github.workspace }}
           for file in *.${{kzm}}; do
