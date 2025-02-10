@@ -94,8 +94,8 @@ jobs:
 
       - name: Generate Firmware SHA-256
         run: |
-          cp ${{ github.workspace }}/bin/targets/${{ env.platform }}/*.itb ${{ github.workspace }}
-          for file in *.itb; do
+          cp ${{ github.workspace }}/bin/targets/${{ env.platform }}/*.* ${{ github.workspace }}
+          for file in *.*; do
             sha256sum "$file" > "$file.sha256"
             sha256sum -c "$file.sha256"
           done
@@ -116,7 +116,7 @@ jobs:
           name: ImmortalWrt-GL-iNet
           body_path: ${{ github.workspace }}/mediatek-filogic/info.md
           files: |
-            ${{ github.workspace }}/*.itb
+            ${{ github.workspace }}/*.*
             ${{ github.workspace }}/*.sha256
           token: ${{ secrets.GITHUB_TOKEN }}
         env:
