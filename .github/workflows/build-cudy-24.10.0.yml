@@ -92,6 +92,7 @@ jobs:
         run: |
           if [ "$profiles" = "cudy_tr3000-v1-ubootmod" ]; then
             kzm=itb
+            echo "platform=ipq40xx/generic" >> $GITHUB_ENV
           else
             kzm=bin
           fi
