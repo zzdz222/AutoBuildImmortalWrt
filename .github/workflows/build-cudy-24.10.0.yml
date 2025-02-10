@@ -90,8 +90,13 @@ jobs:
 
       - name: Generate Firmware SHA-256
         run: |
-          cp ${{ github.workspace }}/bin/targets/${{ env.platform }}/*.bin ${{ github.workspace }}
-          for file in *.bin; do
+          if [ "$profiles" = "cudy_tr3000-v1-ubootmod" ]; then
+            kzm=itb
+          else
+            kzm=bin
+          fi
+          cp ${{ github.workspace }}/bin/targets/${{ env.platform }}/*.${{kzm}} ${{ github.workspace }}
+          for file in *.${{kzm}}; do
             sha256sum "$file" > "$file.sha256"
             sha256sum -c "$file.sha256"
           done
@@ -112,7 +117,7 @@ jobs:
           name: ImmortalWrt-cudy
           body_path: ${{ github.workspace }}/mediatek-filogic/info.md
           files: |
-            ${{ github.workspace }}/*.*
+            ${{ github.workspace }}/*.${{kzm}}
             ${{ github.workspace }}/*.sha256
           token: ${{ secrets.GITHUB_TOKEN }}
         env:
