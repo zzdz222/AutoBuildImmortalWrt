@@ -44,6 +44,13 @@ PACKAGES="$PACKAGES openssh-sftp-server"
 PACKAGES="$PACKAGES fdisk"
 PACKAGES="$PACKAGES script-utils"
 PACKAGES="$PACKAGES luci-i18n-samba4-zh-cn"
+# zzdz222自定义增加
+PACKAGES="$PACKAGES kmod-usb-net-rtl8152"
+PACKAGES="$PACKAGES kmod-usb-net-rndis"
+PACKAGES="$PACKAGES usbutils"
+PACKAGES="$PACKAGES luci-i18n-udpxy-zh-cn"
+PACKAGES="$PACKAGES igmpproxy"
+PACKAGES="$PACKAGES kmod-fs-ntfs"
 
 
 # 判断是否需要编译 Docker 插件
