@@ -51,6 +51,8 @@ PACKAGES="$PACKAGES usbutils"
 PACKAGES="$PACKAGES luci-i18n-udpxy-zh-cn"
 PACKAGES="$PACKAGES igmpproxy"
 PACKAGES="$PACKAGES kmod-fs-ntfs"
+PACKAGES="$PACKAGES tailscale"
+
 
 
 # 判断是否需要编译 Docker 插件
